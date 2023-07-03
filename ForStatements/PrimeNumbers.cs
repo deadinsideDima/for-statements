@@ -4,14 +4,59 @@
     {
         public static bool IsPrimeNumber(uint n)
         {
-            // TODO Task 15. Implement the method that returns true if n is a prime number; otherwise returns false.
-            throw new NotImplementedException();
+            uint m = n;
+            uint i;
+            if (m == 0 || m == 1)
+            {
+                return false;
+            }
+
+            for (i = 2; i < m; i++)
+            {
+                if (n % i == 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         public static ulong SumDigitsOfPrimeNumbers(int start, int end)
         {
-            // TODO Task 16. Implement the method that returns the sum of digits of all prime numbers in the [start, end] interval.
-            throw new NotImplementedException();
+            ulong result = 0;
+            for (int i = start; i <= end; i++)
+            {
+                bool p = true;
+                int m = i / 2;
+                int j;
+                if (i == 0 || i == 1)
+                {
+                    p = false;
+                }
+
+                for (j = 2; j <= m; j++)
+                {
+                    if (i % j == 0)
+                    {
+                        p = false;
+                    }
+                }
+
+                if (p)
+                {
+                    ulong k = (ulong)i;
+                    while (k > 9)
+                    {
+                        result += k % 10;
+                        k /= 10;
+                    }
+
+                    result += k;
+                }
+            }
+
+            return result;
         }
     }
 }

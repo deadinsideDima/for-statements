@@ -4,26 +4,68 @@
     {
         public static ulong GetGeometricSequenceTermsProduct(uint a, uint r, uint n)
         {
-            // TODO Task 11. Implement the method that returns the product of geometric sequence terms.
-            throw new NotImplementedException();
+            ulong result = 1;
+            ulong i = 0;
+            for (i = 0; i < n; i++)
+            {
+                ulong rpow = 1;
+                for (ulong j = 0; j < i; j++)
+                {
+                    rpow *= r;
+                }
+
+                result *= a * rpow;
+            }
+
+            return result;
         }
 
         public static ulong SumGeometricSequenceTerms(uint n)
         {
-            // TODO Task 12. Implement the method that returns sum of a geometric sequence terms when the first term is 5 and the common ratio is 3.
-            throw new NotImplementedException();
+            ulong sum = 0;
+            double i = 0;
+            for (i = 0; i < n; i++)
+            {
+                double vIn = Math.Pow(3, i);
+                uint vOut = Convert.ToUInt32(vIn);
+                sum += 5 * vOut;
+            }
+
+            return sum;
         }
 
         public static ulong CountGeometricSequenceTerms1(uint a, uint r, uint maxTerm)
         {
-            // TODO Task 13. Implement the method that counts terms in a geometric sequence that are less than or equal to the maxTerm.
-            throw new NotImplementedException();
+            ulong sum = a;
+            ulong i = 1;
+            if (maxTerm < a)
+            {
+                return 0;
+            }
+
+            for (i = 1; a * r <= maxTerm; i++)
+            {
+                a *= r;
+                sum += a;
+            }
+
+            return i;
         }
 
         public static ulong CountGeometricSequenceTerms2(uint a, uint r, uint n, uint minTerm)
         {
-            // TODO Task 14. Implement the method that counts terms in a geometric sequence that are greater than or equal to a minTerm.
-            throw new NotImplementedException();
+            ulong i = 0;
+            for (; n > 0; n--)
+            {
+                if (a >= minTerm)
+                {
+                    i++;
+                }
+
+                a *= r;
+            }
+
+            return i;
         }
     }
 }
